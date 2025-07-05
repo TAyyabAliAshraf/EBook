@@ -59,11 +59,28 @@
             width: 100%;
             z-index: 20;
             padding: 0 1rem;
+            display: none; /* Hidden by default, shown if video fails */
+        }
+        
+        .no-video .hero-content {
+            display: block; /* Show when video is not playing */
         }
         
         /* Mobile menu animation */
         .mobile-menu {
             transition: all 0.3s ease;
+        }
+
+        /* Animation for eBook section items */
+        .ebook-item {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .ebook-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -115,11 +132,18 @@
             <div class="video-fallback" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
         </div>
 
-        <!-- Overlay for better text visibility -->
+        <!-- Overlay for better textBao visibility -->
         <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
 
         <!-- Content -->
-        
+        <div class="hero-content text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Unlock Financial Freedom</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto">
+                Discover how to build a thriving vacation rental business with our comprehensive eBook.
+            </p>
+            <a href="#buy" class="mt-8 inline-block bg-blue-600 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-blue-700 transition-colors">
+                Get Started Now
+            </a>
         </div>
     </section>
 
@@ -192,33 +216,63 @@
                 </div>
                 <div class="md:w-1/2 mt-8 md:mt-0 md:pl-12">
                     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Vacation rental property" 
+                         alt="Modern vacation home" 
                          class="rounded-lg shadow-lg w-full transition-transform hover:scale-105">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- eBook Section -->
+    <!-- eBook Content Section -->
     <section id="ebook" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-                Your Guide to Financial Freedom
+                What's Inside Our eBook
             </h2>
             <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                Our eBook is packed with everything you need to start a thriving vacation rental business.
+                Your comprehensive guide to building a thriving vacation rental business, packed with actionable insights.
             </p>
-            <div class="mt-12 max-w-3xl mx-auto">
-                <img src="BookCover.png" 
-                     alt="eBook cover" 
-                     class="mx-auto rounded-lg shadow-lg w-full max-w-md transition-transform hover:scale-105">
-                <p class="mt-6 text-gray-600">
-                    Learn step-by-step how to find properties, attract guests, and maximize profits — all with minimal upfront costs.
-                </p>
-                <a href="#buy" class="mt-8 inline-block bg-blue-600 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-blue-700 transition-colors">
-                    Get Your Copy Today
-                </a>
+            <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="p-6 bg-gray-50 rounded-lg ebook-item">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="Mindset for success" 
+                         class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-900">The Right Mindset</h3>
+                    <p class="mt-2 text-gray-600">
+                        Develop the confidence and strategies to succeed in the vacation rental industry with a winning mindset.
+                    </p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg ebook-item">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="Vacation rental market" 
+                         class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-900">All About the Vacation Rental Market</h3>
+                    <p class="mt-2 text-gray-600">
+                        Understand market trends, demand, and how to position your rentals for maximum profitability.
+                    </p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg ebook-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="Finding properties" 
+                         class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-900">Finding the Right Property</h3>
+                    <p class="mt-2 text-gray-600">
+                        Learn how to identify and secure high-potential properties without needing to own them.
+                    </p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg ebook-item">
+                    <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="Managing bookings" 
+                         class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-900">Managing Bookings and Guest Experience</h3>
+                    <p class="mt-2 text-gray-600">
+                        Master the art of handling bookings and creating memorable guest experiences.
+                    </p>
+                </div>
             </div>
+            <a href="#buy" class="mt-8 inline-block bg-blue-600 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-blue-700 transition-colors">
+                Get Your Copy Today
+            </a>
         </div>
     </section>
 
@@ -310,7 +364,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2025 Freedom Through Rentals. All rights reserved.</p>
+                <p>© 2025 Freedom Through Rentals. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -349,17 +403,37 @@
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('hero-video');
             const videoContainer = document.querySelector('.video-container');
+            const heroContent = document.querySelector('.hero-content');
             
             if (video) {
                 // Try to play the video
                 const playPromise = video.play();
                 
                 if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        // Video failed to play, show fallback
-                        videoContainer.classList.add('no-video');
-                    });
+                    playPromise
+                        .then(() => {
+                            // Video is playing, hide hero content
+                            heroContent.style.display = 'none';
+                            videoContainer.classList.remove('no-video');
+                        })
+                        .catch(error => {
+                            // Video failed to play, show fallback and hero content
+                            videoContainer.classList.add('no-video');
+                            heroContent.style.display = 'block';
+                        });
                 }
+                
+                // Listen for video pause/stop to show hero content
+                video.addEventListener('pause', () => {
+                    videoContainer.classList.add('no-video');
+                    heroContent.style.display = 'block';
+                });
+
+                // Listen for video play to hide hero content
+                video.addEventListener('play', () => {
+                    videoContainer.classList.remove('no-video');
+                    heroContent.style.display = 'none';
+                });
                 
                 // For iOS devices - mute the video by default
                 video.muted = true;
@@ -370,7 +444,32 @@
                         video.muted = false;
                     }
                 }, { once: true });
+            } else {
+                // No video element, show hero content and fallback
+                videoContainer.classList.add('no-video');
+                heroContent.style.display = 'block';
             }
+
+            // Intersection Observer for eBook section animations
+            const ebookItems = document.querySelectorAll('.ebook-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            ebookItems.forEach(item => {
+                observer.observe(item);
+            });
         });
     </script>
 </body>
